@@ -1,0 +1,26 @@
+{% set version = "1.0.0" %}
+
+package:
+  name: chemicalite
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/rvianello/chemicalite.git
+  #git_rev:
+
+build:
+  number: 1
+  include_recipe: False
+
+requirements:
+  build:
+    - cmake
+    - {{ compiler('cxx') }}
+  host:
+    - sqlite
+    - rdkit
+    - eigen
+    #- python
+  run:
+    - sqlite
+    - rdkit
