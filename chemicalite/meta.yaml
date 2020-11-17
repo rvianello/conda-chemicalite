@@ -15,12 +15,12 @@ build:
 requirements:
   build:
     - cmake
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - sqlite
-    - rdkit
+    - sqlite {{ sqlite }}
+    - rdkit {{ rdkit }}
     - eigen
-    #- python
   run:
     - sqlite
     - rdkit

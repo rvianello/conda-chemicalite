@@ -1,0 +1,15 @@
+sqlite:
+  - 3.33.0
+  - 3.32.3
+  - 3.30.1
+
+rdkit:
+  - 2020.09.1
+
+pin_run_as_build:
+  rdkit:
+    max_pin: x.x.x
+    min_pin: x.x.x
+  sqlite:
+    max_pin: x.x
+    min_pin: x.x
