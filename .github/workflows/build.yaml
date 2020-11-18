@@ -1,0 +1,41 @@
+name: build conda packages
+
+on: [push]
+
+jobs:
+
+  package:
+    name: package for ${{ matrix.config.platform }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - os: ubuntu-latest
+            platform: linux-64
+            miniforge-url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+          - os: macos-latest
+            platform: osx-64
+            miniforge-url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-x86_64.sh"
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Setup a miniforge distribution
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          installer-url: ${{ matrix.config.miniforge-url }}
+          allow-softlinks: true
+          show-channel-urls: true
+          use-only-tar-bz2: true
+          auto-activate-base: false
+      # Display some diagnostic info and configure the available conda installation
+      - name: Run conda info
+        shell: bash -l {0}
+        run: |
+          conda config --set always_yes yes --set changeps1 no
+          conda install conda-build
+          conda info
+      # Run conda build
+      - name: Build the conda packages
+        shell: bash -l {0}
+        run: conda build chemicalite
