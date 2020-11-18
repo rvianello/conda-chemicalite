@@ -32,10 +32,11 @@ jobs:
       - name: Run conda info
         shell: bash -l {0}
         run: |
-          conda config --set always_yes yes --set changeps1 no
-          conda install conda-build
+          conda config --set always_yes yes
+          conda install conda-build anaconda-client
+          conda config --set anaconda_upload yes
           conda info
       # Run conda build
       - name: Build the conda packages
         shell: bash -l {0}
-        run: conda build chemicalite
+        run: conda build --token ${{ secrets.ANACONDA_TOKEN }} chemicalite
