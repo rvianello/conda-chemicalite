@@ -34,9 +34,10 @@ jobs:
         run: |
           conda config --set always_yes yes
           conda install conda-build conda-verify #anaconda-client
+          python -c "from conda_build.os_utils.external import find_executable; print(find_executable(\"anaconda\")"
           conda config --set anaconda_upload yes
           conda info
       # Run conda build
-      - name: Build the conda packages
-        shell: bash -l {0}
-        run: conda build --user chemicalite --token ${{ secrets.ANACONDA_TOKEN }} --label dev chemicalite
+      #- name: Build the conda packages
+      #  shell: bash -l {0}
+      #  run: conda build --user chemicalite --token ${{ secrets.ANACONDA_TOKEN }} --label dev chemicalite
