@@ -39,4 +39,4 @@ jobs:
       # Run conda build
       - name: Build the conda packages
         shell: bash -l {0}
-        run: conda build --user chemicalite --token ${{ secrets.ANACONDA_TOKEN }} --label dev chemicalite
+        run: conda build --user chemicalite --token ${{ secrets.ANACONDA_TOKEN }} --label dev --debug chemicalite
