@@ -1,4 +1,4 @@
-{% set version = "2020.12.2" %}
+{% set version = "2020.12.3" %}
 
 package:
   name: chemicalite
