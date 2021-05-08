@@ -21,6 +21,7 @@ requirements:
     - sqlite {{ sqlite }}
     - rdkit {{ rdkit }}
     - eigen
+    - catch2
   run:
     - sqlite
     - rdkit
