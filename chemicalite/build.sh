@@ -6,6 +6,6 @@ cmake \
 
 make
 
-LD_LIBRARY_PATH=$PWD/src ctest
+LD_LIBRARY_PATH=$PWD/src ctest --output-on-failure
 
 make install

@@ -1,4 +1,4 @@
-{% set version = "2021.07.1" %}
+{% set version = "2021.07.2" %}
 
 package:
   name: chemicalite
@@ -25,3 +25,7 @@ requirements:
   run:
     - sqlite
     - rdkit
+
+test:
+  commands:
+    - echo ".load chemicalite" | sqlite3
